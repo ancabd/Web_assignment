@@ -9,15 +9,21 @@
 <body>
     <main>
         <section id = "left">
-            <img src = "logo_2.png">
+            <img src = "images/logo_2.png">
         </section>
         <section id = "top">
             <p> Fog of War </p>
         </section>
         <section id="middle">
-            <form action="/play" method="get">
-              <button type="submit"> PLAY </button>
+            <form action="/create">
+                <button type="submit">CREATE GAME</button>
             </form>
+            <form action="game.html" method="get">
+                <label>Game code:</label> <br>
+                <input type = "text" class = "code"> <br>
+                <button type="submit"> PLAY </button> <br>
+            </form>
+
         </section>
     </main>
     
