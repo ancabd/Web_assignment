@@ -99,8 +99,9 @@ var boardModule = function(){
     /** moves the seleted piece to i, j (in table and on screen) if some piece is selected */
     moveSelectedPieceTo = function(i, j){
 
-        if (document.getElementById('messageBox').innerHTML == Status.gameStart)
-        document.getElementById('messageBox').innerHTML = '';
+        if (document.getElementById('messageBox').innerHTML == Status.gameStart ||
+            document.getElementById('messageBox').innerHTML == Status.firstMove)
+            document.getElementById('messageBox').innerHTML = '';
 
         let prevX = selectedPiece.x, prevY = selectedPiece.y;
         let newTable = selectedPiece.move(table, i, j);
@@ -216,12 +217,6 @@ var boardModule = function(){
                     gridContainer.appendChild(tile);
                 }
 
-            /** create the place to display messages */
-            /*let messageBox = document.createElement('DIV');
-            messageBox.className = 'messageBox';
-            messageBox.id = 'messageBox';
-            document.body.appendChild(messageBox);*/
-
             resetColors(findVisibleSquares());
             renderPieces();
         },
@@ -253,7 +248,6 @@ var boardModule = function(){
         /** starts the game */
         startGame: function(){
             canMove = true;
-            document.getElementById('messageBox').innerHTML = Status.gameStart;
         },
         /** returns the color of the player */
         getColor: function(){

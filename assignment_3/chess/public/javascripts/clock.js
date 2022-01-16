@@ -16,6 +16,11 @@ const clock = function(initialTime){
     
     this.thisClock.innerText = TOTAL_TIME;
     this.opponentClock.innerText = TOTAL_TIME;
+
+    // stop the image from animating
+    const clockImage = document.getElementsByClassName('onlyClock');
+    clockImage[0].classList.add('pausedA');
+    clockImage[0].classList.add('pausedB');
 }
 
 /**
@@ -23,18 +28,34 @@ const clock = function(initialTime){
  * @param {string} player 
  */
 clock.prototype.setPlayer = function(player){
-    
+    const clockImage = document.getElementsByClassName('onlyClock');
+
     if (player == 'THIS'){
         this.thisStartTime = Date.now();
+        
         if (this.whoIsPlaying != 'NO ONE')
             this.opponentOffsetTime = this.thisStartTime - this.opponentStartTime;
+
+        //setting clock to animate
+        if (!clockImage[0].classList.contains('pausedA'))
+            clockImage[0].classList.add('pausedA');
+        clockImage[0].classList.remove('pausedB');
     }
     else if (player == 'OPPONENT'){
         this.opponentStartTime = Date.now();
         if (this.whoIsPlaying != 'NO ONE')
             this.thisOffsetTime = this.opponentStartTime - this.thisStartTime;
+
+        if (!clockImage[0].classList.contains('pausedB'))
+            clockImage[0].classList.add('pausedB');
+        clockImage[0].classList.remove('pausedA');
     }
-    else this.whoIsPlaying = 'NO ONE';
+    else 
+    {
+        this.whoIsPlaying = 'NO ONE';
+        clockImage[0].classList.add('pausedB');
+        clockImage[0].classList.add('pausedA');
+    }
 
     this.whoIsPlaying = player;
 }

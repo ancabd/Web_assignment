@@ -10,6 +10,7 @@ const WEB_SOCKET_URL = "ws://localhost:3000";
     this.socket = socket;
     this.winner = null;
     this.clock = clock;
+    this.firstMove = false;
   }
   
 /**
@@ -104,10 +105,15 @@ const WEB_SOCKET_URL = "ws://localhost:3000";
       if (incomingMsg.type == Messages.T_GAME_START){
         gs.board.startGame(true);
         gameClock.setPlayer('THIS');
+        gs.firstMove = true;
         document.getElementById('messageBox').innerHTML = Status.gameStart;
       }
       // move the opponents piece
       if (incomingMsg.type == Messages.T_MOVE) {
+        if (!gs.firstMove)
+          document.getElementById('messageBox').innerHTML = Status.firstMove;
+
+        gs.firstMove = true;
         gameClock.setPlayer('THIS');
         gs.board.moveOpponentPieceTo(incomingMsg.data);
       }
@@ -129,9 +135,6 @@ const WEB_SOCKET_URL = "ws://localhost:3000";
   
     //server sends a close event only if the game was aborted from some side
     socket.onclose = function () {
-      if (gs.whoWon() == null) {
-        sb.setStatus(Status["aborted"]);
-      }
     };
   
     socket.onerror = function () {};

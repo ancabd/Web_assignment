@@ -1,15 +1,4 @@
-/* Usable colors */
-/*------------------------------------------------------------------------------------------------------------*/
-:root{
-    --hoverLightColor: rgb(204, 204, 204);
-    --hoverDarkColor: #46798a;
-    --darkColor: #6ebbd5;
-    --lightColor: white;
-    --notVisibleLightColor: rgb(138, 136, 136);
-    --notVisibleDarkColor: rgb(39, 39, 39);
-    --selectedColor: darkblue;
-    --activeButton: red;
-}
+@import "style.css";
 
 body{
     margin: auto;
@@ -23,9 +12,6 @@ body{
     display: grid;
     grid-template-rows: repeat(8, 100px);
     grid-template-columns: repeat(8, 100px);
-
-    /*grid-row-gap: 10px;
-    grid-column-gap: 10px;*/
 } 
 
 /* Tiles rules */
@@ -117,25 +103,23 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
-/* Button */
-button:active{
-    background-color: var(--activeButton);
-}
 
 /* The side bar for displaying messages */
 /*------------------------------------------------------------------------------------------------------------*/
 .messageBar {
     height: 100%; /* Full-height */
-    width: 500px; /* Width of the sidebar */
+    width: 20%; /* Width of the sidebar */
     position: fixed; /* Fixed Sidebar*/
     z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
+    top: 0; 
     left: 0;
     background-color: #111; /* Black */
-    padding-top: 20px;
   }
 .messageBox{
-     color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 30px;
+    color: white;
 }
 
 /* The clock */
@@ -144,4 +128,53 @@ button:active{
     position: absolute;
     left: 80%;
     top: 45%;
+}
+
+/* Rotating lines */
+.onlyClock::before, 
+.onlyClock::after{
+    content: "";
+    background: black;
+    width: 5px;
+    height: 31px;
+    position: absolute;
+    top: 52px;
+    left: 60px;
+    transform-origin: bottom;
+    animation:spin 4s linear infinite;
+}
+.onlyClock::after{
+    left: 160px;
+}
+@keyframes spin { 
+    100% { 
+        transform:rotate(360deg); 
+    } 
+}
+
+/* For pausing animations */
+.pausedA::before, .pausedB::after{
+    animation-play-state: paused;
+}
+
+/* Buttons */
+/*------------------------------------------------------------------------------------------------------------*/
+button{
+    position: absolute;
+    bottom: 50px;
+    right: 10%;
+
+    font-size: 30px;
+    color: var(--lightColor);
+    background-color: black;
+
+    border: none;
+
+}
+
+button:hover{
+    background-color: var(--notVisibleLightColor);
+}
+button:active{
+    background-color: var(--activeButton);
 }

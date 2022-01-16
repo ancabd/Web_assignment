@@ -1,8 +1,67 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Usable colors */
+/*------------------------------------------------------------------------------------------------------------*/
+:root{
+  --hoverLightColor: rgb(204, 204, 204);
+  --hoverDarkColor: #46798a;
+  --darkColor: #6ebbd5;
+  --lightColor: white;
+  --notVisibleLightColor: rgb(138, 136, 136);
+  --notVisibleDarkColor: rgb(39, 39, 39);
+  --selectedColor: #203563;
+  --activeButton: red;
+  --lightBG: #6ebbd5;
+  --darkBG: rgb(38, 91, 134);
 }
 
-a {
-  color: #00B7FF;
+html,
+body,
+main {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+
+  overflow-y:hidden;
+  overflow-x:hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1300px), (max-height: 800px) {
+  body {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 40px !important;
+    color: white !important;
+    
+    background-color: black !important;
+  }
+  .leftText{
+      animation-play-state: paused !important;
+  }
+  #left, #right, div, .not-visible{
+      background-color: black !important;
+      color: black !important;
+  }
+  .leftText, .rightText, button, .clock, .not-visible{
+      display: none !important;
+  }
+  #left:after{
+      color: white !important;
+      content: "Your window is too small (at least 1300x800px is expected) to play this game. Enlarge the browser window or zoom out to play or disable the CSS @media query."
+  }
+  img{
+      display: none !important;
+  }
+  
 }

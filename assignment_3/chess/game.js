@@ -26,7 +26,7 @@ game.prototype.transitionStates = {
  */
 game.prototype.transitionMatrix = [
     [0, 1, 0, 0, 0, 0], //0 players
-    [1, 0, 1, 0, 0, 0], //1 player
+    [1, 0, 1, 0, 0, 1], //1 player
     [0, 0, 0, 1, 1, 1], //2 players
     [0, 0, 0, 0, 0, 0], //white WON
     [0, 0, 0, 0, 0, 0], //black WON

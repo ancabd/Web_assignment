@@ -5,12 +5,17 @@ const websocket = require("ws");
 const indexRouter = require("./routes/index.js");
 const messages = require("./public/javascripts/messages");
 const Game = require("./game");
+const gameStatus = require("./statTracker");
 
 const port = process.argv[2];
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
-app.get("/", indexRouter);
+app.set('view engine', 'ejs')
+app.get('/', function(req, res) {
+    //example of data to render; here gameStatus is an object holding this information
+    res.render('splash.ejs', { gamesInitialized: gameStatus.gamesStarted, gamesAborted: gameStatus.gamesAborted, gamesFinished: gameStatus.gamesFinished });
+})
 app.get("/play", indexRouter);
 
 const server = http.createServer(app).listen(port);
@@ -18,7 +23,6 @@ const wss = new websocket.Server({ server });
 
 const websockets = {}; //property: websocket, value: game
 
-const gameStatus = require("./statTracker");
 
 /*
  * regularly clean up the websockets object
@@ -148,10 +152,6 @@ wss.on("connection", function connection(ws) {
     });
   
     con.on("close", function(code) {
-      /*
-       * code 1001 means almost always closing initiated by the client;
-       * source: https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent
-       */
       console.log(`${con.id} disconnected ...`);
   
       if (code == 1001) {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/splash.css">
+    <link rel="icon" href="images/logo.png" type="image/icon type">
+    <title>Dark chess</title>
+</head>
+<body>
+    <main>
+        <section id = "left">
+            <div class = "leftText">
+                Dark
+            </div>
+            <img src = "images/logo.png">
+            <div class="stats">
+                <br>
+                <h3><%= gamesInitialized %> 
+                    <%if (gamesInitialized != 1) { %>
+                        games
+                    <% } else { %>
+                        game
+                    <% } %>
+                    initialized
+                </h3>
+                <h3>
+                    <%= gamesAborted %>
+                    <%if (gamesAborted != 1) { %>
+                        games
+                    <% } else { %>
+                        game
+                    <% } %>
+                    aborted
+                </h3>
+                <h3>
+                    <%= gamesFinished %> 
+                    <%if (gamesFinished != 1) { %>
+                        games
+                    <% } else { %>
+                        game
+                    <% } %>
+                    finished
+                </h3>
+            </div>
+        </section>
+        
+        <section id = "right">
+            <div class = "rightText">
+                Chess
+            </div>
+            <form action="https://support.chess.com/article/1668-what-is-fog-of-war-chess" method="get">
+                <button type="submit" id = 'linkButton'> How to play </button> <br>
+            </form>
+            <form action="/play" method="get">
+                <button type="submit"> Play </button> <br>
+            </form>
+
+        </section>
+    </main>
+</body>
+</html>
