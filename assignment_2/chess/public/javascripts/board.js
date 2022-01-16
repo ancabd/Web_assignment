@@ -192,6 +192,7 @@ var boardModule = function(){
         /** constructs and draws the initial board */
         drawBoard:  function(){
             for (let i = 0; i < 8; ++ i){
+
                 let row = document.createElement('DIV');
                 row.className = 'row';
 
@@ -216,10 +217,6 @@ var boardModule = function(){
                         }
                         renderViableMoves();
                     });
-                    tile.addEventListener('contextmenu', function(){
-                        selectedPiece = ' ';
-                        renderViableMoves();
-                    })
 
                     row.appendChild(tile);
                 }
@@ -260,9 +257,14 @@ var boardModule = function(){
             }
             else console.log("An invalid move was sent");
         }, 
+        /** starts the game */
         startGame: function(){
             canMove = true;
             document.getElementById('messageBox').innerHTML = Status.gameStart;
+        },
+        /** returns the color of the player */
+        getColor: function(){
+            return colorPlaying;
         }
     }
 

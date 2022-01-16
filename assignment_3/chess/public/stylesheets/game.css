@@ -1,0 +1,147 @@
+/* Usable colors */
+/*------------------------------------------------------------------------------------------------------------*/
+:root{
+    --hoverLightColor: rgb(204, 204, 204);
+    --hoverDarkColor: #46798a;
+    --darkColor: #6ebbd5;
+    --lightColor: white;
+    --notVisibleLightColor: rgb(138, 136, 136);
+    --notVisibleDarkColor: rgb(39, 39, 39);
+    --selectedColor: darkblue;
+    --activeButton: red;
+}
+
+body{
+    margin: auto;
+    width: 640px;
+    margin-top:10px;
+}
+
+/* Grid container rules */
+/*------------------------------------------------------------------------------------------------------------*/
+.grid-container{
+    display: grid;
+    grid-template-rows: repeat(8, 100px);
+    grid-template-columns: repeat(8, 100px);
+
+    /*grid-row-gap: 10px;
+    grid-column-gap: 10px;*/
+} 
+
+/* Tiles rules */
+/*------------------------------------------------------------------------------------------------------------*/
+.grid-container div{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+/* Normal white tiles */
+.grid-container div:nth-child(16n + 2), 
+.grid-container div:nth-child(16n + 4), 
+.grid-container div:nth-child(16n + 6),
+.grid-container div:nth-child(16n + 8),
+.grid-container div:nth-child(16n + 9), 
+.grid-container div:nth-child(16n + 11), 
+.grid-container div:nth-child(16n + 13), 
+.grid-container div:nth-child(16n + 15){
+    background-color: var(--lightColor);
+}
+
+/* Normal black tiles */
+.grid-container div:nth-child(16n + 1), 
+.grid-container div:nth-child(16n + 3), 
+.grid-container div:nth-child(16n + 5),
+.grid-container div:nth-child(16n + 7), 
+.grid-container div:nth-child(16n + 10), 
+.grid-container div:nth-child(16n + 12), 
+.grid-container div:nth-child(16n + 14),
+.grid-container div:nth-child(16n){
+    background-color: var(--darkColor);
+}
+
+/* Hover white tiles */
+.grid-container div:nth-child(16n + 2):hover, 
+.grid-container div:nth-child(16n + 4):hover, 
+.grid-container div:nth-child(16n + 6):hover,
+.grid-container div:nth-child(16n + 8):hover,
+.grid-container div:nth-child(16n + 9):hover, 
+.grid-container div:nth-child(16n + 11):hover, 
+.grid-container div:nth-child(16n + 13):hover, 
+.grid-container div:nth-child(16n + 15):hover{
+    background-color: var(--hoverLightColor);
+}
+
+/* Hover black tiles */
+.grid-container div:nth-child(16n + 1):hover, 
+.grid-container div:nth-child(16n + 3):hover, 
+.grid-container div:nth-child(16n + 5):hover,
+.grid-container div:nth-child(16n + 7):hover, 
+.grid-container div:nth-child(16n + 10):hover, 
+.grid-container div:nth-child(16n + 12):hover, 
+.grid-container div:nth-child(16n + 14):hover,
+.grid-container div:nth-child(16n):hover{
+    background-color: var(--hoverDarkColor);
+}
+
+/* Not visible white tiles*/
+.grid-container .not-visible:nth-child(16n + 2), 
+.grid-container .not-visible:nth-child(16n + 4), 
+.grid-container .not-visible:nth-child(16n + 6),
+.grid-container .not-visible:nth-child(16n + 8), 
+.grid-container .not-visible:nth-child(16n + 9), 
+.grid-container .not-visible:nth-child(16n + 11), 
+.grid-container .not-visible:nth-child(16n + 13),
+.grid-container .not-visible:nth-child(16n + 15){
+    background-color: var(--notVisibleLightColor) !important;
+}
+
+/* Not visible black tiles*/
+.grid-container .not-visible:nth-child(16n + 1), 
+.grid-container .not-visible:nth-child(16n + 3), 
+.grid-container .not-visible:nth-child(16n + 5),
+.grid-container .not-visible:nth-child(16n + 7), 
+.grid-container .not-visible:nth-child(16n + 10), 
+.grid-container .not-visible:nth-child(16n + 12), 
+.grid-container .not-visible:nth-child(16n + 14),
+.grid-container .not-visible:nth-child(16n){
+    background-color: var(--notVisibleDarkColor) !important;
+}
+/* For visible moves*/
+.grid-container .selected{
+    background-color: var(--selectedColor) !important;
+}
+/* Images */
+.image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Button */
+button:active{
+    background-color: var(--activeButton);
+}
+
+/* The side bar for displaying messages */
+/*------------------------------------------------------------------------------------------------------------*/
+.messageBar {
+    height: 100%; /* Full-height */
+    width: 500px; /* Width of the sidebar */
+    position: fixed; /* Fixed Sidebar*/
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black */
+    padding-top: 20px;
+  }
+.messageBox{
+     color: white;
+}
+
+/* The clock */
+/*------------------------------------------------------------------------------------------------------------*/
+.clock {
+    position: absolute;
+    left: 80%;
+    top: 45%;
+}
